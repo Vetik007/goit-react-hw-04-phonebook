@@ -68,9 +68,9 @@ const App = () => {
 
   return (
     <div className={css.wrapper}>
-      <h1>Phonebook</h1>
+      <h1 className={css.book}>Phonebook</h1>
       <ContactForm onSubmit={addContact} />
-      <h2>Contacts</h2>
+      <h2 className={css.cont}>Contacts</h2>
       {contacts.length > 0 ? (
         <Filter value={filter} onChangeFilter={changeFilter} />
       ) : (
