@@ -4,22 +4,25 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-import contactsData from './data/contactsData.json';
+// import contactsData from './data/contactsData.json';
 import css from './App.module.css';
 
 const App = () => {
-  const [contacts, setContacts] = useState(contactsData);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('contacts')) || []
+  );
+  // const [contacts, setContacts] = useState(contactsData);
   const [filter, setFilter] = useState('');
 
   // зчитуємо дані з localStorage
   // у масиві залежності вказуємо порожній масив [], що означає, що ефект буде виконано лише один раз - після першого рендерингу компонента.
-  useEffect(() => {
-    const storedContacts = localStorage.getItem('contacts');
-    // Робимо перевірку на наявнясть у localStorage даних. Якщо так оновлюємо стан contacts у useState
-    if (storedContacts) {
-      setContacts(JSON.parse(storedContacts));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedContacts = localStorage.getItem('contacts');
+  //   // Робимо перевірку на наявнясть у localStorage даних. Якщо так оновлюємо стан contacts у useState
+  //   if (storedContacts) {
+  //     setContacts(JSON.parse(storedContacts));
+  //   }
+  // }, []);
 
   // збереження даних у localStorage. В масив залежностей useEffect передаємо поточний стан елементу contacts який зберігається у хуку useState.
   // useEffect викликається при кожнній зміні стану contacts результатом чого є збереження оновленного масиву

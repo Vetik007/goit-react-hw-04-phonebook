@@ -43,4 +43,5 @@ input {
 .body-root {
   background-image: url(/public/background.jpg);
   background-repeat: no-repeat;
+  background-size: cover;
 }
